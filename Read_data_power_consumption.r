@@ -1,6 +1,3 @@
-
-load_powerdata <- function() {
-  
   library(data.table)
   library(lubridate)
     
@@ -32,5 +29,3 @@ load_powerdata <- function() {
   power_consum_selected$Sub_metering_3 <- as.numeric(power_consum_selected$Sub_metering_3)
   # write tidy data to file power_consumption20070201.txt
   write.table(power_consum_selected,file='power_consumption20070201.txt',sep=';',row.names=FALSE)
-
-}
