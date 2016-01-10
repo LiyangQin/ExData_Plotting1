@@ -22,6 +22,15 @@ load_powerdata <- function() {
   power_consum_selected$DateTime<-dmy(power_consum_selected$Date)+hms(power_consum_selected$Time)
   power_consum_selected$Date <- as.Date(power_consum_selected$Date, format="%d/%m/%Y")
   
-  str(power_consum_selected)
-  
+  # convert other numeric data
+  power_consum_selected$Global_active_power <- as.numeric(power_consum_selected$Global_active_power)
+  power_consum_selected$Global_reactive_power <- as.numeric(power_consum_selected$Global_reactive_power)
+  power_consum_selected$Voltage <- as.numeric(power_consum_selected$Voltage)
+  power_consum_selected$Global_intensity <- as.numeric(power_consum_selected$Global_intensity)
+  power_consum_selected$Sub_metering_1 <- as.numeric(power_consum_selected$Sub_metering_1)
+  power_consum_selected$Sub_metering_2 <- as.numeric(power_consum_selected$Sub_metering_2)
+  power_consum_selected$Sub_metering_3 <- as.numeric(power_consum_selected$Sub_metering_3)
+  # write tidy data to file power_consumption20070201.txt
+  write.table(power_consum_selected,file='power_consumption20070201.txt',sep=';',row.names=FALSE)
+
 }
